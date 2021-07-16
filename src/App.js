@@ -2,8 +2,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import { Component } from 'react';
 
-import book from './components/book';
-import booklist from './components/booklist';
+import Book from './components/Book';
+import BookList from './components/BookList';
 
 class App extends Component {
 
@@ -20,22 +20,11 @@ class App extends Component {
         <h2> Add Book:</h2>
       </div>
  
-      <div className="mb-3">
-  <label for="formGroupExampleInput" className="form-label">Author</label>
-  <input type="text" className="form-control" id="formGroupExampleInput" placeholder=" "/>
-</div>
-<div className="mb-3">
-  <label for="formGroupExampleInput2" className="form-label">Title</label>
-  <input type="text" className="form-control" id="formGroupExampleInput2" placeholder=""/>
-</div>
-<div className="mb-3">
-  <label for="formGroupExampleInput2" className="form-label">ISBN#</label>
-  <input type="text" className="form-control" id="formGroupExampleInput2" placeholder=""/>
-</div>
+      
 
   
-<book/>
-<booklist/>
+<Book/>
+<BookList/>
      
 
     </div>
