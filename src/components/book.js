@@ -1,27 +1,68 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import BookModel from '../models/Book';
 
-export default class book extends Component {
-    render() {
-        return (
-            <div>
-                 <div className="mb-3">
-  <label for="formGroupExampleInput" className="form-label">Author</label>
-  <input type="text" className="form-control" id="formGroupExampleInput" placeholder=" "/>
-</div>
-<div className="mb-3">
-  <label for="formGroupExampleInput2" className="form-label">Title</label>
-  <input type="text" className="form-control" id="formGroupExampleInput2" placeholder=""/>
-</div>
-<div className="mb-3">
-  <label for="formGroupExampleInput2" className="form-label">ISBN#</label>
-  <input type="text" className="form-control" id="formGroupExampleInput2" placeholder=""/>
-</div>
+export default class Book extends Component {
+  constructor(props) {
+    super(props);
 
-<div class="d-grid gap-2">
-  <button class="btn btn-primary" type="button">Submit</button>
-</div>
-            </div>
+    this.state = {
+      name: '',
+      author: '',
+      isbn: ''
+    };
+  }
 
-        )
-    }
+  onAddBook() {
+    const book = new BookModel(this.state.name, this.state.author, this.state.isbn);
+    this.props.createBook(book);
+    this.setState({ name: '', author: '', isbn: '' });
+  }
+
+  render() {
+    return (
+      <div className="mt-3">
+        <form>
+
+          <div className="mb-3">
+            <label className="form-label">Title</label>
+            <input
+              value={this.state.name}
+              onChange={(e) => this.setState({ name: e.target.value })}
+              type="text"
+              className="form-control"
+              placeholder="Book Title" />
+          </div>
+
+          <div className="mb-3">
+            <label className="form-label">Author</label>
+            <input
+              value={this.state.author}
+              onChange={(e) => this.setState({ author: e.target.value })}
+              type="text"
+              className="form-control"
+              placeholder="Author" />
+          </div>
+
+          <div className="mb-3">
+            <label className="form-label">ISBN#</label>
+            <input
+              value={this.state.isbn}
+              onChange={(e) => this.setState({ isbn: e.target.value })}
+              type="text"
+              className="form-control"
+              placeholder="ISBN" />
+          </div>
+
+          <div className="d-grid gap-2 mb-4">
+            <button onClick={() => this.onAddBook()}
+              className="btn btn-outline-primary"
+              type="button">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+
+    )
+  }
 }
